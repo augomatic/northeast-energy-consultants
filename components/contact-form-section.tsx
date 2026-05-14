@@ -104,18 +104,18 @@ export function ContactFormSection() {
           <div className="mt-6 grid gap-3">
             <a
               href={`mailto:${SITE_CONTACT.email}`}
-              className="inline-flex w-fit items-center rounded-full border border-white/[0.08] bg-white/[0.04] px-4 py-2 text-sm font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition duration-300 hover:border-[rgba(78,148,255,0.28)] hover:text-[var(--color-primary)]"
+              className="inline-flex w-full min-w-0 items-center rounded-full border border-white/[0.08] bg-white/[0.04] px-4 py-2 text-sm font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition duration-300 hover:border-[rgba(78,148,255,0.28)] hover:text-[var(--color-primary)] sm:w-fit"
             >
-              {SITE_CONTACT.email}
+              <span className="min-w-0 break-all sm:break-normal">{SITE_CONTACT.email}</span>
             </a>
             <a
               href={SITE_CONTACT.phoneHref}
-              className="inline-flex w-fit items-center rounded-full border border-white/[0.08] bg-white/[0.04] px-4 py-2 text-sm font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition duration-300 hover:border-[rgba(78,148,255,0.28)] hover:text-[var(--color-primary)]"
+              className="inline-flex w-full min-w-0 items-center rounded-full border border-white/[0.08] bg-white/[0.04] px-4 py-2 text-sm font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition duration-300 hover:border-[rgba(78,148,255,0.28)] hover:text-[var(--color-primary)] sm:w-fit"
             >
-              {SITE_CONTACT.phoneLabel}
+              <span className="min-w-0 break-words">{SITE_CONTACT.phoneLabel}</span>
             </a>
           </div>
-          <div className="mt-8 grid gap-3 text-sm text-[var(--color-muted)]">
+          <div className="mt-7 grid gap-3 text-sm leading-6 text-[var(--color-muted)]">
             <div className="inline-flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-primary)] shadow-[0_0_14px_rgba(33,147,255,0.55)]" />
               <span>No-obligation commercial energy review</span>
@@ -127,7 +127,7 @@ export function ContactFormSection() {
           </div>
         </div>
 
-        <SurfaceCard className="border-[rgba(130,168,255,0.18)] bg-[linear-gradient(155deg,rgba(12,27,49,0.96),rgba(8,18,34,0.96))] p-5 shadow-[0_30px_100px_rgba(0,0,0,0.42)] sm:p-7">
+        <SurfaceCard className="border-[rgba(130,168,255,0.18)] bg-[linear-gradient(155deg,rgba(12,27,49,0.96),rgba(8,18,34,0.96))] p-4 shadow-[0_30px_100px_rgba(0,0,0,0.42)] sm:p-7">
           <div className="mb-7">
             <h3 className="font-[var(--font-display)] text-2xl font-semibold tracking-[-0.03em] text-white">
               Send us your account details
@@ -242,7 +242,7 @@ export function ContactFormSection() {
                       first and send documents later.
                     </div>
                     {selectedFileName ? (
-                      <div className="mt-2 text-xs font-medium text-[var(--color-primary)]">
+                      <div className="mt-2 break-all text-xs font-medium text-[var(--color-primary)]">
                         Selected file: {selectedFileName}
                       </div>
                     ) : null}
@@ -250,7 +250,7 @@ export function ContactFormSection() {
                   <ActionButton
                     type="button"
                     variant="secondary"
-                    className="px-5 py-2.5 text-[13px]"
+                    className="w-full px-5 py-2.5 text-[13px] sm:w-auto"
                     onClick={() => fileInputRef.current?.click()}
                   >
                     {selectedFileName ? "Change Utility Bill" : "Upload Utility Bill"}
@@ -300,7 +300,7 @@ export function ContactFormSection() {
               <ActionButton
                 type="submit"
                 disabled={status === "submitting"}
-                className="px-6 py-3"
+                className="w-full px-6 py-3 sm:w-auto"
               >
                 {status === "submitting"
                   ? "Sending..."

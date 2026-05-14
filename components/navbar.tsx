@@ -15,7 +15,7 @@ export function Navbar() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <a
             href="#top"
-            className="group inline-flex items-center transition duration-300"
+            className="group mx-auto inline-flex items-center transition duration-300 sm:mx-0"
             aria-label="Northeast Energy Consultants home"
           >
             <span className="relative inline-flex items-center rounded-[0.95rem] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(250,252,255,0.98),rgba(227,237,251,0.94))] px-2.5 py-1.5 shadow-[0_14px_30px_rgba(0,0,0,0.28)] ring-1 ring-[rgba(255,255,255,0.04)] transition duration-300 group-hover:-translate-y-[1px] group-hover:shadow-[0_18px_36px_rgba(0,0,0,0.34)]">
@@ -26,18 +26,18 @@ export function Navbar() {
                 priority
                 width={1290}
                 height={423}
-                className="relative h-auto w-[8.8rem] sm:w-[10rem]"
+                className="relative h-auto w-[7.9rem] min-w-0 sm:w-[10rem]"
               />
             </span>
           </a>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 md:gap-5">
-            <nav className="flex flex-wrap items-center gap-4 text-sm font-medium text-[var(--color-muted)] md:gap-5">
+            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm font-medium text-[var(--color-muted)] md:gap-5">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="rounded-full px-2 py-1 transition duration-300 hover:text-white"
+                  className="rounded-full px-2 py-1 leading-none transition duration-300 hover:text-white"
                 >
                   {link.label}
                 </a>
@@ -53,7 +53,7 @@ export function Navbar() {
 
             <LinkButton
               href="#contact"
-              className="px-5 py-2.5 text-[13px] sm:min-w-[9.75rem]"
+              className="w-full px-5 py-2.5 text-[13px] sm:w-auto sm:min-w-[9.75rem]"
             >
               Request Free Bill Review
             </LinkButton>

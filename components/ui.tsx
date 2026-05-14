@@ -13,7 +13,7 @@ type ContainerProps = {
 
 export function Container({ children, className }: ContainerProps) {
   return (
-    <div className={cn("mx-auto w-full max-w-7xl px-6 lg:px-8", className)}>
+    <div className={cn("mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8", className)}>
       {children}
     </div>
   );
@@ -39,10 +39,10 @@ export function SectionHeading({
       <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-white/[0.05] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--color-muted)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
         {eyebrow}
       </div>
-      <h2 className="mt-6 font-[var(--font-display)] text-3xl font-semibold leading-[1.02] tracking-[-0.03em] text-white sm:text-4xl">
+      <h2 className="mt-5 font-[var(--font-display)] text-[2rem] font-semibold leading-[1.04] tracking-[-0.03em] text-white sm:mt-6 sm:text-4xl">
         {title}
       </h2>
-      <p className="mt-5 text-base leading-8 text-[var(--color-muted)] sm:text-lg">
+      <p className="mt-4 text-[15px] leading-7 text-[var(--color-muted)] sm:mt-5 sm:text-lg sm:leading-8">
         {description}
       </p>
     </div>
@@ -54,7 +54,7 @@ function buttonClasses(
   className?: string
 ) {
   return cn(
-    "relative inline-flex items-center justify-center overflow-hidden rounded-full px-6 py-3 text-sm font-semibold transition duration-500 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(111,180,255,0.55)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]",
+    "relative inline-flex min-h-11 items-center justify-center overflow-hidden rounded-full px-6 py-3 text-sm font-semibold transition duration-500 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(111,180,255,0.55)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]",
     variant === "primary" &&
       "border border-[rgba(148,198,255,0.18)] bg-[linear-gradient(135deg,#2b96ff,#0d67ff)] text-white shadow-[0_16px_40px_rgba(15,107,255,0.28),inset_0_1px_0_rgba(255,255,255,0.2)] before:absolute before:inset-0 before:bg-[linear-gradient(120deg,rgba(255,255,255,0.2),transparent_38%,transparent_62%,rgba(255,255,255,0.08))] before:opacity-70 before:transition before:duration-500 hover:-translate-y-[1px] hover:shadow-[0_22px_52px_rgba(15,107,255,0.36)] hover:before:opacity-100",
     variant === "secondary" &&

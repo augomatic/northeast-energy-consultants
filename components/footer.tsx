@@ -9,13 +9,13 @@ export function Footer() {
         <div className="flex flex-col gap-2 border-t border-white/[0.06] pt-4 md:flex-row md:items-center md:gap-5 md:border-t-0 md:border-l md:border-white/[0.06] md:pl-5 md:pt-0">
           <a
             href={`mailto:${SITE_CONTACT.email}`}
-            className="transition duration-300 hover:text-white"
+            className="break-all transition duration-300 hover:text-white sm:break-normal"
           >
             {SITE_CONTACT.email}
           </a>
           <a
             href={SITE_CONTACT.phoneHref}
-            className="transition duration-300 hover:text-white"
+            className="break-words transition duration-300 hover:text-white"
           >
             {SITE_CONTACT.phoneLabel}
           </a>
