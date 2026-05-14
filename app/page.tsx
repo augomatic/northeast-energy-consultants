@@ -108,7 +108,7 @@ const trustNotes = [
 
 export default function Home() {
   return (
-    <div id="top" className="relative overflow-x-hidden">
+    <div id="top" className="relative">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[40rem] bg-[radial-gradient(circle_at_top,rgba(33,147,255,0.2),transparent_58%)]" />
       <Navbar />
 
