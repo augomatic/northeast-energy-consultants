@@ -36,7 +36,7 @@ const highestPrice = Math.max(...marketSnapshot.map((item) => item.price));
 
 export function HeroVisual() {
   return (
-    <div className="relative mx-auto w-full max-w-[35.75rem] lg:pl-4">
+    <div className="relative mx-auto w-full max-w-[35.75rem] lg:max-w-[38.5rem] lg:pl-4 xl:max-w-[41rem]">
       <div className="pulse-soft pointer-events-none absolute left-4 top-8 h-28 w-28 rounded-full bg-[rgba(33,147,255,0.24)] blur-3xl sm:left-12 sm:top-10 sm:h-40 sm:w-40" />
       <div className="pulse-soft pointer-events-none absolute bottom-0 right-2 h-32 w-32 rounded-full bg-[rgba(15,107,255,0.2)] blur-3xl sm:bottom-2 sm:right-6 sm:h-48 sm:w-48" />
 
@@ -57,7 +57,7 @@ export function HeroVisual() {
             </div>
           </div>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-[1.1fr_0.9fr]">
+          <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1.28fr)_minmax(18rem,0.9fr)] xl:grid-cols-[minmax(0,1.35fr)_minmax(19rem,0.92fr)]">
             <div className="rounded-[1.5rem] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(10,24,44,0.9),rgba(7,17,31,0.9))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-5">
               <div className="flex flex-col gap-1 text-[11px] uppercase tracking-[0.18em] text-[var(--color-muted)] sm:flex-row sm:items-center sm:justify-between sm:tracking-[0.24em]">
                 <span>Avg commercial electricity price</span>
@@ -69,22 +69,22 @@ export function HeroVisual() {
                     key={item.abbreviation}
                     className="rounded-[1.2rem] border border-white/[0.06] bg-white/[0.04] px-3 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:px-4"
                   >
-                    <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-3">
+                    <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 gap-y-2 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:items-start lg:gap-x-4">
                       <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-[rgba(33,147,255,0.24)] bg-[rgba(33,147,255,0.12)] text-[11px] font-semibold text-[var(--color-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
                         {item.abbreviation}
                       </div>
                       <div className="min-w-0">
-                        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-                          <div className="min-w-0">
-                            <p className="text-[13px] font-medium text-white sm:text-sm">
-                              {item.state}
-                            </p>
-                          </div>
-                          <span className="text-sm font-semibold text-white sm:text-[15px]">
-                            {item.price.toFixed(1)} cents/kWh
-                          </span>
-                        </div>
-                        <div className="mt-2.5 h-2 rounded-full bg-white/[0.08]">
+                        <p className="text-[13px] font-medium text-white sm:text-sm">
+                          {item.state}
+                        </p>
+                      </div>
+                      <div className="col-start-2 min-w-0 text-left lg:col-start-3 lg:justify-self-end lg:text-right">
+                        <span className="inline-flex min-w-0 max-w-full whitespace-nowrap text-sm font-semibold text-white sm:text-[15px]">
+                          {item.price.toFixed(1)} cents/kWh
+                        </span>
+                      </div>
+                      <div className="col-start-2 min-w-0 lg:col-start-2 lg:col-end-4">
+                        <div className="h-2 rounded-full bg-white/[0.08]">
                           <div
                             className="h-full rounded-full bg-[linear-gradient(90deg,var(--color-primary),#8aceff)] shadow-[0_0_18px_rgba(33,147,255,0.35)]"
                             style={{
@@ -109,13 +109,13 @@ export function HeroVisual() {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-[1.5rem] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(10,24,44,0.9),rgba(7,17,31,0.9))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-5">
+            <div className="relative rounded-[1.5rem] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(10,24,44,0.9),rgba(7,17,31,0.9))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-5">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(33,147,255,0.18),transparent_58%)]" />
               <div className="relative">
                 <p className="relative text-[11px] uppercase tracking-[0.24em] text-[var(--color-muted)]">
                   Review Flow
                 </p>
-                <h3 className="mt-3 font-[var(--font-display)] text-[1.35rem] font-semibold tracking-[-0.03em] text-white sm:text-[1.55rem]">
+                <h3 className="mt-3 font-[var(--font-display)] text-[1.3rem] font-semibold tracking-[-0.03em] text-white sm:text-[1.5rem]">
                   A practical four-step commercial review.
                 </h3>
                 <p className="mt-2 text-[13px] leading-6 text-[var(--color-muted)] sm:text-sm">
@@ -126,15 +126,15 @@ export function HeroVisual() {
                   {reviewSteps.map((step, index) => (
                     <div
                       key={step.title}
-                      className="relative overflow-hidden rounded-[1.25rem] border border-white/[0.08] bg-white/[0.05] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+                      className="relative rounded-[1.25rem] border border-white/[0.08] bg-white/[0.05] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
                     >
                       <div className="absolute inset-y-4 left-0 w-px bg-[linear-gradient(180deg,transparent,rgba(33,147,255,0.55),transparent)]" />
                       <div className="flex items-start gap-3">
                         <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-[rgba(33,147,255,0.24)] bg-[rgba(33,147,255,0.12)] text-sm font-semibold text-[var(--color-primary)] shadow-[0_0_22px_rgba(33,147,255,0.16)]">
                           {index + 1}
                         </div>
-                        <div>
-                          <h4 className="text-sm font-semibold text-white sm:text-[15px]">
+                        <div className="min-w-0 flex-1">
+                          <h4 className="text-sm font-semibold leading-5 text-white sm:text-[15px]">
                             {step.title}
                           </h4>
                           <p className="mt-1.5 text-[13px] leading-6 text-[var(--color-muted)]">

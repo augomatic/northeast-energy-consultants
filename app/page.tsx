@@ -114,7 +114,7 @@ export default function Home() {
 
       <main>
         <section className="section-shell relative pb-14 pt-8 md:pb-20 md:pt-[3.5rem]">
-          <Container className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_34rem] xl:grid-cols-[minmax(0,1fr)_36rem] xl:gap-12">
+          <Container className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(36rem,39rem)] xl:grid-cols-[minmax(0,1fr)_minmax(39rem,42rem)] xl:gap-10">
             <div className="max-w-[41rem]">
               <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-white/[0.05] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--color-muted)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
                 Commercial Energy Procurement
