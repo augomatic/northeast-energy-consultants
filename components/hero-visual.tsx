@@ -1,13 +1,38 @@
 import { SurfaceCard } from "./ui";
 
-const coverageBars = [
-  { abbreviation: "MA", label: "Massachusetts", width: "88%" },
-  { abbreviation: "CT", label: "Connecticut", width: "80%" },
-  { abbreviation: "RI", label: "Rhode Island", width: "72%" },
-  { abbreviation: "NY", label: "New York", width: "92%" },
-  { abbreviation: "NH", label: "New Hampshire", width: "68%" },
-  { abbreviation: "ME", label: "Maine", width: "64%" }
+const marketSnapshot = [
+  { abbreviation: "MA", state: "Massachusetts", price: 20.9 },
+  { abbreviation: "CT", state: "Connecticut", price: 21.2 },
+  { abbreviation: "RI", state: "Rhode Island", price: 21.1 },
+  { abbreviation: "NY", state: "New York", price: 18.0 },
+  { abbreviation: "NH", state: "New Hampshire", price: 19.4 },
+  { abbreviation: "ME", state: "Maine", price: 18.2 }
 ] as const;
+
+const reviewSteps = [
+  {
+    title: "Bill Review",
+    description:
+      "Review usage, demand, current supplier, and utility charges."
+  },
+  {
+    title: "Supplier Comparison",
+    description:
+      "Compare available supplier options in deregulated markets."
+  },
+  {
+    title: "Contract Evaluation",
+    description:
+      "Evaluate term length, fixed vs. variable pricing, fees, and renewal language."
+  },
+  {
+    title: "Recommendation",
+    description:
+      "Present clear options so the business can choose the best fit."
+  }
+] as const;
+
+const highestPrice = Math.max(...marketSnapshot.map((item) => item.price));
 
 export function HeroVisual() {
   return (
@@ -24,104 +49,102 @@ export function HeroVisual() {
                 Market Review Dashboard
               </p>
               <h2 className="mt-2 font-[var(--font-display)] text-[1.45rem] font-semibold tracking-[-0.03em] text-white sm:mt-3 sm:text-[1.9rem]">
-                Regional energy sourcing
+                Northeast Market Snapshot
               </h2>
             </div>
             <div className="w-fit rounded-full border border-[rgba(255,255,255,0.08)] bg-white/[0.06] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--color-primary)] sm:tracking-[0.24em]">
-              6 active states
+              6 Northeast markets
             </div>
           </div>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-[1.1fr_0.9fr]">
             <div className="rounded-[1.5rem] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(10,24,44,0.9),rgba(7,17,31,0.9))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-5">
               <div className="flex flex-col gap-1 text-[11px] uppercase tracking-[0.18em] text-[var(--color-muted)] sm:flex-row sm:items-center sm:justify-between sm:tracking-[0.24em]">
-                <span>Supplier comparison coverage</span>
-                <span>Live review</span>
+                <span>Avg commercial electricity price</span>
+                <span>Benchmark view</span>
               </div>
-              <div className="mt-5 space-y-4 sm:mt-6">
-                {coverageBars.map((item) => (
+              <div className="mt-5 space-y-3 sm:mt-6">
+                {marketSnapshot.map((item) => (
                   <div
                     key={item.abbreviation}
-                    className="grid grid-cols-[auto_1fr] items-center gap-3"
+                    className="rounded-[1.2rem] border border-white/[0.06] bg-white/[0.04] px-3 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:px-4"
                   >
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-[rgba(33,147,255,0.24)] bg-[rgba(33,147,255,0.12)] text-[11px] font-semibold text-[var(--color-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
-                      {item.abbreviation}
-                    </div>
-                    <div>
-                      <div className="flex items-center justify-between gap-3">
-                        <span className="text-[13px] font-medium text-white sm:text-sm">
-                          {item.label}
-                        </span>
-                        <span className="text-xs text-[var(--color-muted)]">
-                          {item.width}
-                        </span>
+                    <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-3">
+                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-[rgba(33,147,255,0.24)] bg-[rgba(33,147,255,0.12)] text-[11px] font-semibold text-[var(--color-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+                        {item.abbreviation}
                       </div>
-                      <div className="mt-2 h-2 rounded-full bg-white/[0.08]">
-                        <div
-                          className="h-full rounded-full bg-[linear-gradient(90deg,var(--color-primary),#8aceff)] shadow-[0_0_18px_rgba(33,147,255,0.35)]"
-                          style={{ width: item.width }}
-                        />
+                      <div className="min-w-0">
+                        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                          <div className="min-w-0">
+                            <p className="text-[13px] font-medium text-white sm:text-sm">
+                              {item.state}
+                            </p>
+                          </div>
+                          <span className="text-sm font-semibold text-white sm:text-[15px]">
+                            {item.price.toFixed(1)} cents/kWh
+                          </span>
+                        </div>
+                        <div className="mt-2.5 h-2 rounded-full bg-white/[0.08]">
+                          <div
+                            className="h-full rounded-full bg-[linear-gradient(90deg,var(--color-primary),#8aceff)] shadow-[0_0_18px_rgba(33,147,255,0.35)]"
+                            style={{
+                              width: `${(item.price / highestPrice) * 100}%`
+                            }}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
+              <div className="mt-5 border-t border-white/[0.08] pt-4">
+                <p className="text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
+                  Source: U.S. Energy Information Administration
+                </p>
+                <p className="mt-2 text-[12px] leading-5 text-[var(--color-muted)]">
+                  Benchmark commercial electricity averages. Actual supplier
+                  pricing varies by utility territory, usage profile, term
+                  length, and contract structure.
+                </p>
+              </div>
             </div>
 
-            <div className="flex flex-col gap-4">
-              <div className="relative overflow-hidden rounded-[1.5rem] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(10,24,44,0.9),rgba(7,17,31,0.9))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-5">
-                <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(33,147,255,0.18),transparent_58%)]" />
+            <div className="relative overflow-hidden rounded-[1.5rem] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(10,24,44,0.9),rgba(7,17,31,0.9))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-5">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(33,147,255,0.18),transparent_58%)]" />
+              <div className="relative">
                 <p className="relative text-[11px] uppercase tracking-[0.24em] text-[var(--color-muted)]">
                   Review Flow
                 </p>
-                <div className="relative mt-5 flex items-center justify-center overflow-hidden py-6 sm:mt-6 sm:py-8">
-                  <div className="absolute h-36 w-36 rounded-full border border-[rgba(33,147,255,0.18)] sm:h-44 sm:w-44" />
-                  <div className="absolute h-[6.5rem] w-[6.5rem] rounded-full border border-white/[0.1] sm:h-32 sm:w-32" />
-                  <div className="absolute left-1/2 top-6 h-px w-[4.5rem] -translate-x-1/2 bg-[linear-gradient(90deg,transparent,rgba(33,147,255,0.55),transparent)] sm:top-7 sm:w-24" />
-                  <div className="absolute bottom-6 left-1/2 h-px w-[4.5rem] -translate-x-1/2 bg-[linear-gradient(90deg,transparent,rgba(33,147,255,0.55),transparent)] sm:bottom-7 sm:w-24" />
-                  <div className="absolute left-4 top-1/2 h-[4.5rem] w-px -translate-y-1/2 bg-[linear-gradient(180deg,transparent,rgba(33,147,255,0.55),transparent)] sm:left-7 sm:h-24" />
-                  <div className="absolute right-4 top-1/2 h-[4.5rem] w-px -translate-y-1/2 bg-[linear-gradient(180deg,transparent,rgba(33,147,255,0.55),transparent)] sm:right-7 sm:h-24" />
-                  <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-[rgba(33,147,255,0.24)] bg-[linear-gradient(180deg,rgba(33,147,255,0.18),rgba(255,255,255,0.04))] text-center text-[13px] font-semibold text-white shadow-[0_0_32px_rgba(33,147,255,0.24)] sm:h-24 sm:w-24 sm:text-sm">
-                    Contract
-                    <br />
-                    fit
-                  </div>
-                  <div className="absolute left-1/2 top-1 translate-x-5 rounded-full border border-white/[0.1] bg-white/[0.06] px-2.5 py-1 text-[10px] text-[var(--color-muted)] sm:translate-x-10 sm:px-3 sm:text-[11px]">
-                    Usage
-                  </div>
-                  <div className="absolute bottom-1 left-1/2 -translate-x-12 rounded-full border border-white/[0.1] bg-white/[0.06] px-2.5 py-1 text-[10px] text-[var(--color-muted)] sm:-translate-x-16 sm:px-3 sm:text-[11px]">
-                    Rates
-                  </div>
-                  <div className="absolute left-1 top-1/2 -translate-y-11 rounded-full border border-white/[0.1] bg-white/[0.06] px-2.5 py-1 text-[10px] text-[var(--color-muted)] sm:-translate-y-12 sm:px-3 sm:text-[11px]">
-                    Bill
-                  </div>
-                  <div className="absolute right-1 top-1/2 translate-y-9 rounded-full border border-white/[0.1] bg-white/[0.06] px-2.5 py-1 text-[10px] text-[var(--color-muted)] sm:translate-y-10 sm:px-3 sm:text-[11px]">
-                    Terms
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-[1.5rem] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(10,24,44,0.9),rgba(7,17,31,0.9))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-5">
-                <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--color-muted)]">
-                  Process Snapshot
+                <h3 className="mt-3 font-[var(--font-display)] text-[1.35rem] font-semibold tracking-[-0.03em] text-white sm:text-[1.55rem]">
+                  A practical four-step commercial review.
+                </h3>
+                <p className="mt-2 text-[13px] leading-6 text-[var(--color-muted)] sm:text-sm">
+                  Each review is grounded in utility territory, usage profile,
+                  renewal timing, and contract structure.
                 </p>
-                <div className="mt-5 grid grid-cols-3 gap-2 sm:flex sm:items-center sm:gap-3">
-                  <div className="flex-1 rounded-2xl border border-white/[0.08] bg-white/[0.05] px-3 py-3 text-center text-xs font-medium text-white">
-                    Bill
-                  </div>
-                  <div className="hidden h-px flex-1 bg-[linear-gradient(90deg,rgba(33,147,255,0.12),rgba(33,147,255,0.66),rgba(33,147,255,0.12))] sm:block" />
-                  <div className="flex-1 rounded-2xl border border-white/[0.08] bg-white/[0.05] px-3 py-3 text-center text-xs font-medium text-white">
-                    Options
-                  </div>
-                  <div className="hidden h-px flex-1 bg-[linear-gradient(90deg,rgba(33,147,255,0.12),rgba(33,147,255,0.66),rgba(33,147,255,0.12))] sm:block" />
-                  <div className="flex-1 rounded-2xl border border-white/[0.08] bg-white/[0.05] px-3 py-3 text-center text-xs font-medium text-white">
-                    Decision
-                  </div>
+                <div className="mt-5 space-y-3 sm:mt-6">
+                  {reviewSteps.map((step, index) => (
+                    <div
+                      key={step.title}
+                      className="relative overflow-hidden rounded-[1.25rem] border border-white/[0.08] bg-white/[0.05] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+                    >
+                      <div className="absolute inset-y-4 left-0 w-px bg-[linear-gradient(180deg,transparent,rgba(33,147,255,0.55),transparent)]" />
+                      <div className="flex items-start gap-3">
+                        <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-[rgba(33,147,255,0.24)] bg-[rgba(33,147,255,0.12)] text-sm font-semibold text-[var(--color-primary)] shadow-[0_0_22px_rgba(33,147,255,0.16)]">
+                          {index + 1}
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-semibold text-white sm:text-[15px]">
+                            {step.title}
+                          </h4>
+                          <p className="mt-1.5 text-[13px] leading-6 text-[var(--color-muted)]">
+                            {step.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <p className="mt-4 text-[13px] leading-6 text-[var(--color-muted)] sm:mt-5 sm:text-sm">
-                  Built to reflect a clean, structured review of supplier offers
-                  across deregulated Northeast markets.
-                </p>
               </div>
             </div>
           </div>

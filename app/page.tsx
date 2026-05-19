@@ -119,7 +119,8 @@ export default function Home() {
               <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-white/[0.05] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--color-muted)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
                 Commercial Energy Procurement
               </div>
-              <h1 className="text-glow mt-5 max-w-[11.5ch] font-[var(--font-display)] text-[2.1rem] font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-[3.45rem] lg:text-[4.05rem]">
+              <h1 className="text-glow mt-5 font-[var(--font-display)] text-[2.1rem] font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-[3.45rem] lg:text-[4.05rem]">
+                <span className="block">Helping Businesses</span>
                 <span className="block">Reduce Commercial</span>
                 <span className="block">Energy Costs Across</span>
                 <span className="block">the Northeast</span>
