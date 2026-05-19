@@ -59,9 +59,8 @@ export function HeroVisual() {
 
           <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1.28fr)_minmax(18rem,0.9fr)] xl:grid-cols-[minmax(0,1.35fr)_minmax(19rem,0.92fr)]">
             <div className="rounded-[1.5rem] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(10,24,44,0.9),rgba(7,17,31,0.9))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-5">
-              <div className="flex flex-col gap-1 text-[11px] uppercase tracking-[0.18em] text-[var(--color-muted)] sm:flex-row sm:items-center sm:justify-between sm:tracking-[0.24em]">
-                <span>Avg commercial electricity price</span>
-                <span>Benchmark view</span>
+              <div className="flex flex-col gap-1 text-[11px] uppercase tracking-[0.18em] text-[var(--color-muted)] sm:tracking-[0.24em]">
+                <span>Commercial Rate</span>
               </div>
               <div className="mt-5 space-y-3 sm:mt-6">
                 {marketSnapshot.map((item) => (
@@ -69,22 +68,18 @@ export function HeroVisual() {
                     key={item.abbreviation}
                     className="rounded-[1.2rem] border border-white/[0.06] bg-white/[0.04] px-3 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:px-4"
                   >
-                    <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 gap-y-2 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:items-start lg:gap-x-4">
+                    <div className="flex items-start gap-3">
                       <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-[rgba(33,147,255,0.24)] bg-[rgba(33,147,255,0.12)] text-[11px] font-semibold text-[var(--color-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
                         {item.abbreviation}
                       </div>
-                      <div className="min-w-0">
+                      <div className="min-w-0 flex-1">
                         <p className="text-[13px] font-medium text-white sm:text-sm">
                           {item.state}
                         </p>
-                      </div>
-                      <div className="col-start-2 min-w-0 text-left lg:col-start-3 lg:justify-self-end lg:text-right">
-                        <span className="inline-flex min-w-0 max-w-full whitespace-nowrap text-sm font-semibold text-white sm:text-[15px]">
+                        <p className="mt-1.5 text-sm font-semibold text-white sm:text-[15px]">
                           {item.price.toFixed(1)} cents/kWh
-                        </span>
-                      </div>
-                      <div className="col-start-2 min-w-0 lg:col-start-2 lg:col-end-4">
-                        <div className="h-2 rounded-full bg-white/[0.08]">
+                        </p>
+                        <div className="mt-3 h-2 rounded-full bg-white/[0.08]">
                           <div
                             className="h-full rounded-full bg-[linear-gradient(90deg,var(--color-primary),#8aceff)] shadow-[0_0_18px_rgba(33,147,255,0.35)]"
                             style={{
